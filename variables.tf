@@ -10,6 +10,14 @@ variable "project_id" {
   type        = string
   description = "this is the id of the project."
 }
+variable "notebook_name" {
+  type        = string
+  description = "notebook_name"
+}
+variable "machine_type" {
+  type        = string
+  description = "machine_type"
+}
 variable "service_account" {
   type        = string
   description = "service_account"
@@ -38,10 +46,10 @@ variable "no_remove_data_disk" {
   type        = bool
   description = "no_remove_data_disk"
 }
-# variable "kms_key" {
-#   type        = string
-#   description = "kms_key"
-# }
+variable "kms_key" {
+  type        = string
+  description = "kms_key"
+}
 variable "no_proxy_access" {
   type        = bool
   description = "no_proxy_access"
@@ -57,6 +65,14 @@ variable "network" {
 variable "subnetwork" {
   type        = string
   description = "subnetwork"
+}
+variable "vm_image_project" {
+  type        = string
+  description = "vm_image_project"
+}
+variable "vm_image_family" {
+  type        = string
+  description = "vm_image_family"
 }
 # variable "accelerator_core_count" {
 #   type        = number

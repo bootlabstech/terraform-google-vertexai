@@ -6,15 +6,15 @@ resource "google_project_service" "notebooks" {
   project            = var.project_id
   provider           = google
   service            = "notebooks.googleapis.com"
-  disable_on_destroy = false
+  disable_on_destroy = true
 }
 
 resource "google_notebooks_instance" "basic_instance" {
   project                = var.project_id
   provider               = google
-  name                   = "notebooks-instance-basic"
+  name                   = var.notebook_name
   location               = var.zone
-  machine_type           = "n1-standard-1"
+  machine_type           = var.machine_type
   service_account        = var.service_account
   service_account_scopes = var.service_account_scopes
   boot_disk_type         = var.boot_disk_type
@@ -22,15 +22,15 @@ resource "google_notebooks_instance" "basic_instance" {
   data_disk_type         = var.data_disk_type
   data_disk_size_gb      = var.data_disk_size_gb
   no_remove_data_disk    = var.no_remove_data_disk
-  # kms_key                = var.kms_key
+  disk_encryption        = "CMEK"
+  kms_key                = var.kms_key
   no_public_ip           = var.no_public_ip
   no_proxy_access        = var.no_proxy_access
   network                = var.network
   subnet                 = var.subnetwork
-
   vm_image {
-    project      = "deeplearning-platform-release"
-    image_family = "tf-ent-2-9-cu113-notebooks"
+    project      = var.vm_image_project
+    image_family = var.vm_image_family
   }
   # accelerator_config {
   #   type       = var.accelerator_type
