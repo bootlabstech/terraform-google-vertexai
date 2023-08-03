@@ -40,6 +40,8 @@ resource "google_notebooks_instance" "basic_instance" {
   depends_on = [
     google_project_service.notebooks
   ]
+  post_startup_script = "sudo chmod -R a+w /home/jupyter && sudo chown -R jupyter:jupyter /home/jupyter"
+
 }
 
 
