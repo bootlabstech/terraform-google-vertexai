@@ -1,3 +1,4 @@
+
 resource "google_project_service" "vertexaiapi" {
   project = var.project_id
   service = "aiplatform.googleapis.com"
