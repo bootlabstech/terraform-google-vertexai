@@ -48,10 +48,10 @@ resource "google_workbench_instance" "basic_instance" {
       #nic_type   = "GVNIC"
     }
 
-    vm_image {
-      project = var.vm_image_project
-      family  = var.vm_image_family
-    }
+    # vm_image {
+    #   project = var.vm_image_project
+    #   family  = var.vm_image_family
+    # }
 
     metadata = {
       startup-script = "sudo chmod -R a+w /home/jupyter && sudo chown -R jupyter:jupyter /home/jupyter"
